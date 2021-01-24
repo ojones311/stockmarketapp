@@ -6,4 +6,21 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
+//Get all users 
+router.get('/all', async () => {
+  try{
+    const users = await Users.getAllUsers()|| ''
+    res.json({
+      payload: users,
+      msg:'Fetching all users',
+      err: false,
+    })
+  }catch(error){
+    console.log('err',error)
+    res.json({
+      msg:'Error users could not be fetched',
+      err: true,
+    })
+  }
+})
 module.exports = router;
