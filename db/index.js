@@ -1,5 +1,5 @@
 const pgp = require('pg-promise')()
-const cn = process.env.DATABASE_URL
+const cn = 'postgres://localhost:5432/stockapp_db'
 const db = pgp(cn)   
 
 

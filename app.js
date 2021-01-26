@@ -2,13 +2,15 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
 var logger = require('morgan');
 var cors = require('cors')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var stocksRouter = require('./routes/stocks');
-var userStocksRouter = require('./routes/')
+var userStocksRouter = require('./routes/user_stocks');
+var followersRouter = require('./routes/followers')
 
 var app = express();
 
@@ -21,13 +23,16 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-// app.use('/stocks', stocksRouter);
+app.use('/stocks', stocksRouter);
+app.use('/user_stocks', userStocksRouter);
+app.use('/followers', followersRouter);
 
-// app.listen()
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

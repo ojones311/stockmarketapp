@@ -1,6 +1,6 @@
 const db = require('../db/index')
 
-const getAllUsers = () => {
+const getAllUsers = async () => {
     try{
         let query = 'SELECT * FROM users'
         const users = await db.any(query) 
