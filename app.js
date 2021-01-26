@@ -8,7 +8,7 @@ var cors = require('cors')
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var stocksRouter = require('./routes/stocks');
-var relationsrouter
+var userStocksRouter = require('./routes/')
 
 var app = express();
 

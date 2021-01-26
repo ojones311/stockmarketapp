@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 //Get all users 
 router.get('/all', async () => {
   try{
-    const users = await Users.getAllUsers()|| ''
+    const users = await Users.getAllUsers()
     res.json({
       payload: users,
       msg:'Fetching all users',
@@ -23,4 +23,5 @@ router.get('/all', async () => {
     })
   }
 })
+
 module.exports = router;
