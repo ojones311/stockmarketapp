@@ -68,12 +68,12 @@ INSERT INTO user_stocks (user_id, stock_id, is_deleted)
 -- FOLLOWING
 INSERT INTO following (user_id, follower_id, active_status)
     VALUES(1,2, true),
-        (1,2, true),
+        (2,5, true),
         (1,3, true),
         (1,5, true),
         (2,1, true),
         (5,2, true),
-        (3,3, true),
+        (3,1, true),
         (4,3, true),
         (3,1, true),
         (3,5, true),

@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 });
 
 //Get all users 
-router.get('/all', async (req,res,next) => {
+router.get('/all', async (req, res, next) => {
   try{
     const users = await Users.getAllUsers()
     res.json({
