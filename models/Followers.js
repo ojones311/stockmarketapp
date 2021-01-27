@@ -1,7 +1,7 @@
 const db = require('../db/index')
 
 
-const getFollowersByUserId = async(userId) => {
+const getFollowingByUserId = async(userId) => {
     try{
         let query = `SELECT * FROM following WHERE (user_id=$1 AND active_status=true)`
         const followers = await db.any(query, [userId])
@@ -12,5 +12,5 @@ const getFollowersByUserId = async(userId) => {
 }
 
 module.exports = {
-    getFollowersByUserId
+    getFollowingByUserId
 }

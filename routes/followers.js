@@ -9,9 +9,9 @@ router.get('/', (req,res,next) => {
 router.get('/follower/:id', async (req,res,next) => {
     const {id} = req.params
     try{
-        const followersById = await Followers.getFollowersByUserId(id)
+        const followingById = await Followers.getFollowingByUserId(id)
         res.json({
-            payload: followersById,
+            payload: followingById,
             msg: 'Success. Request retrieved',
             err: false
         })
