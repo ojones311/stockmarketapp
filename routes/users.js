@@ -44,7 +44,7 @@ router.get('/id/:id', async (req,res,next) =>{
   }
 })
 
-
+//Create new user
 router.post('/', async (req, res, next) => {
   const {username, email, password, avatar_url} = req.body
   try{
@@ -63,10 +63,20 @@ router.post('/', async (req, res, next) => {
   }catch(error){
     console.log('err', error)
     res.json({
-      msg: 'Failed, Couldnt load data',
+      msg: 'Failed. Couldnt load data',
       err: true
     })
   }
+})
+
+//Edit user info
+router.patch('/edit/:id', async (req,res,next)=> {
+
+})
+
+//Delete user with soft delete
+router.patch('/delete/:id', async (req,res,next) => {
+
 })
 
 module.exports = router;

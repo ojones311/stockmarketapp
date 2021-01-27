@@ -1,6 +1,6 @@
 const db = require('../db/index')
 
-const getAllUsers = async () => {
+getAllUsers = async () => {
     try{
         let query = 'SELECT * FROM users WHERE is_deleted=false'
         const users = await db.any(query) 
@@ -28,6 +28,7 @@ createNewUser = async (user) => {
             username: user.username,
             email: user.email,
             password: user.password,
+            avatar_url: user.avatar_url,
             is_deleted: false
         })
         console.log(newUser)
@@ -37,9 +38,28 @@ createNewUser = async (user) => {
     }
 }
 
+editUserInfo = async (user) => {
+    let query = `UPDATE users SET username= $1, email= $2, password= $3 avatar_url= $4 WHERE (id= $5 AND is_deleted= false`
+    try{
+        const editedUser = await db.none(query, [user.username, user.email, user.password, user.avatar_url])
+        return editedUser
+    }catch(error){
+        console.log('err', error)
+    }   
+}
 
+deleteUser = async (id) => {
+    let query = `UPDATE users SET is_deleted= true WHERE (id= $1 AND is_deleted= false)`
+    try{
+        const deletedUser = await db.one(query,[id])
+        return deletedUser
+    }catch(error){
+        console.log('err', error)
+    }
+}
 module.exports = {
     getAllUsers,
     getUserById,
     createNewUser,
+    deleteUser
 }
