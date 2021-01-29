@@ -23,4 +23,21 @@ router.get('/all', async (req, res, next) =>{
     }
 })
 
+router.get('/stockId/:id', async (req,res,next)=> {
+    try{
+        const stockById = await Stocks.getStocksByUserId(id)
+        res.json({
+            payload: stockById,
+            msg:'Success.Loading assets',
+            err: false
+        })
+    }catch(error){
+        console.log('err', error)
+        res.json({
+            msg: 'Req failed. Could not load asset',
+            err: true
+        })
+    }
+})
+
 module.exports = router
