@@ -29,6 +29,8 @@ getStocksByUserId = async (stockId) =>{
         console.log('err',error)
     }
 }
+
+
 module.exports = {
     getAllStocks,
     getStockBySymbol,

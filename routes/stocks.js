@@ -39,6 +39,25 @@ router.get('/symbol/:symbol', async (req,res,next)=> {
         })
     }
 })
+
+router.get('/company/:company', async (req,res,next)=> {
+    const {company} = req.params
+    try{
+        const stockByCompany = await Stocks.getStockByCompany(company)
+        res.json({
+            payload: stockByCompany,
+            msg:'Success. Loading assets',
+            err: false
+        })
+    }catch(error){
+        console.log('err', error)
+        res.json({
+            msg:'Error. Couldnt load assets',
+            err: true
+        })
+    }
+})
+
 router.get('/id/:id', async (req,res,next)=> {
     const {id} = req.params
     try{
