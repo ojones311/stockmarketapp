@@ -1,4 +1,6 @@
 var express = require('express');
+const { FailedDependency } = require('http-errors');
+const db = require('../db');
 var router = express.Router();
 const Users = require('../Models/Users')
 
@@ -71,12 +73,51 @@ router.post('/', async (req, res, next) => {
 
 //Edit user info
 router.patch('/edit/:id', async (req,res,next)=> {
+  const {username, email, avatar_url} = req.body
+  const {id} = req.params
+  try{
+    let user = {
+      username,
+      email,
+      avatar_url,
+      id
+    }
+    if(!user.avatar_url){
+      user.avatar_url = ''
+    }
+    const editedUser = await Users.editUserInfo(user)
+    res.json({
+      payload: editedUser,
+      msg: 'Success. Editing user info',
+      err: false
+    })
 
+  }catch(error){
+    console.log('err',error)
+    res.json({
+      msg: 'Failed. Couldnt edit assets',
+      err: true
+    })
+  }
 })
 
 //Delete user with soft delete
 router.patch('/delete/:id', async (req,res,next) => {
-
+  const {id} = req.params
+  try{
+    const deletedUser = await Users.deleteUser(id)
+    res.json({
+      payload: deletedUser,
+      msg: 'Success. User deleted',
+      err: false
+    })
+  }catch(error){
+    console.log('err', error)
+    res.json({
+      msg: 'Failed. Couldnt edit asset',
+      err: true
+    })
+  }
 })
 
 module.exports = router;

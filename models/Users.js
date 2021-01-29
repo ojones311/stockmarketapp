@@ -39,9 +39,9 @@ createNewUser = async (user) => {
 }
 
 editUserInfo = async (user) => {
-    let query = `UPDATE users SET username= $1, email= $2, password= $3 avatar_url= $4 WHERE (id= $5 AND is_deleted= false`
+    let query = `UPDATE users SET username= $1, email= $2, avatar_url= $3 WHERE (id= $4 AND is_deleted= false`
     try{
-        const editedUser = await db.none(query, [user.username, user.email, user.password, user.avatar_url])
+        const editedUser = await db.none(query, [user.username, user.email, user.avatar_url, user.id])
         return editedUser
     }catch(error){
         console.log('err', error)
