@@ -46,6 +46,24 @@ router.get('/id/:id', async (req,res,next) =>{
   }
 })
 
+router.get(`/email/:email`, async (req,res,next) => {
+  const {email} = req.params
+  try{
+    const userByEmail = await Users.getUserByEmail(email)
+    res.json({
+      payload: userByEmail,
+      msg: 'Success. Retrieved data',
+      err: false
+    })
+  }catch(error){
+    console.log('err', error)
+    res.json({
+      msg:'Failed. Couldnt load data',
+      err: true
+    })
+  }
+})
+
 //Create new user
 router.post('/', async (req, res, next) => {
   const {username, email, password, avatar_url} = req.body

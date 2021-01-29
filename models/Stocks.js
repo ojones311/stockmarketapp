@@ -20,6 +20,16 @@ getStockBySymbol = async (symbol) => {
     }
 }
 
+getStockByCompany = async (company) => {
+    try{
+        let query = 'SELECT * FROM stocks WHERE company= $1'
+        const stock = await db.one(query, [company])
+        return stock
+    }catch(error){
+        console.log('err', error)
+    }
+}
+
 getStocksByUserId = async (stockId) =>{
     try{
         let query = 'SELECT * FROM user_stocks INNER JOIN stocks ON stocks.id = user_stocks.stock_id WHERE user_stocks.user_id = $1'
@@ -34,5 +44,6 @@ getStocksByUserId = async (stockId) =>{
 module.exports = {
     getAllStocks,
     getStockBySymbol,
+    getStockByCompany,
     getStocksByUserId
 }

@@ -24,4 +24,6 @@ router.get('/follower/:id', async (req,res,next) => {
     }
 })
 
+router.get('/')
+
 module.exports = router 
