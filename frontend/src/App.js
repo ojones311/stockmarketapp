@@ -14,7 +14,6 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <h1>Stock Market App </h1>
       <div className='App-body'>
       <Switch>
             <Route exact path= "/" component={LandingPage}/>

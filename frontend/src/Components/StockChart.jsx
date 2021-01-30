@@ -17,6 +17,7 @@ const StockChart = () => {
     return(
         <div>
             
+           <button onClick={() => fetchStockValues()}>Fetch</button> 
         </div>
     )
 }
