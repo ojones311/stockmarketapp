@@ -76,4 +76,22 @@ router.get('/id/:id', async (req,res,next)=> {
     }
 })
 
+router.patch('/delete/:id', async (req,res, next) => {
+    const {id} = req.params
+    try{
+        const deletedStock = await Stocks.deleteStockById(id)
+        res.json({
+            payload: deletedStock,
+            msg:'Success.Loading assets',
+            err: false
+        })
+    }catch(error){
+        console.log('err', error)
+        res.json({
+            msg: 'Req failed. Could not load asset',
+            err: true
+        })
+    }
+})
+
 module.exports = router

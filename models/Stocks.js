@@ -1,5 +1,6 @@
 const db = require('../db/index')
 
+
 getAllStocks = async() => {
     try{
         let query = `SELECT * FROM stocks WHERE is_deleted=false`
@@ -40,10 +41,20 @@ getStocksByUserId = async (stockId) =>{
     }
 }
 
+deleteStockById = async (stockId) => {
+    try{
+        let query = `UPDATE stocks SET is_deleted=true WHERE (id=$1 AND is_deleted=false)`
+        const stock = await db.one(query, [stockId])
+        return stock
+    }catch(error){
+        console.log('err', error)
+    }
+}
 
 module.exports = {
     getAllStocks,
     getStockBySymbol,
     getStockByCompany,
-    getStocksByUserId
+    getStocksByUserId,
+    deleteStockById
 }
