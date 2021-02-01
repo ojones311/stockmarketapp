@@ -12,7 +12,7 @@ const useSubmitForm = (callback) => {
     const handleFormChange = (e) => {
      e.persist()
      setValue(values => ({...values, [e.target.name]:e.target.value}));
-    //  console.log(values)
+     console.log(values)
     }
  
     return {
