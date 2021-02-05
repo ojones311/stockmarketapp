@@ -4,15 +4,9 @@ import axios from 'axios'
 
 const SearchStockForm = () => {
 
-    const [stock, setStock] = useState('')
-    const {values, handleFormChange, handleFormSubmit} = useSubmitForm(() => handleSearchStockValue() )
+    // const [stock, setStock] = useState('')
+    const {values, handleFormChange, handleFormSubmit} = useSubmitForm(() => fetchStockValues(values.stock) )
 
-    const handleSearchStockValue = async (values) => {
-        setStock(values.stock)
-        fetchStockValues(values.stock)
-        debugger;
-    }
-    
 
     const fetchStockValues = async (stock) => {
         try{
