@@ -1,9 +1,9 @@
-import React,{useState} from 'react'
+import React from 'react'
 import useSubmitForm from '../Components/useSubmitForm'
 import axios from 'axios'
 import secrets from '../secrets' 
 
-const SearchStockForm = ({stock, chart, setStock, setChart}) => {
+const SearchStockForm = ({setStock, setChart}) => {
 
     const {values, handleFormChange, handleFormSubmit} = useSubmitForm(() => {
         fetchStockQuoteValues(values.stock)
