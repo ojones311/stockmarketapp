@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import axios from 'axios'
 
-const StockChart = () => {
+const StockChart = ({}) => {
 
     const [stockChartXValue, setStockChartXValue] = useState(0)
     const [stockChartYValue, setStockChartYValue] = useState(0)

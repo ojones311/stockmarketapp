@@ -1,21 +1,34 @@
 import React,{useState} from 'react'
 import useSubmitForm from '../Components/useSubmitForm'
 import axios from 'axios'
+import secrets from '../secrets' 
 
-const SearchStockForm = () => {
+const SearchStockForm = ({stock, chart, setStock, setChart}) => {
 
-    const {values, handleFormChange, handleFormSubmit} = useSubmitForm(() => fetchStockValues(values.stock) )
+    const {values, handleFormChange, handleFormSubmit} = useSubmitForm(() => {
+        fetchStockQuoteValues(values.stock)
+        fetchStockChartData(values.stock)
+    } )
 
-
-    const fetchStockValues = async (stock) => {
+    const fetchStockQuoteValues = async (stock) => {
         try{
-            console.log(stock)
-            let response = await axios.get(`https://cloud.iexapis.com/stable/stock/${stock}/quote/?token=${process.env.REACT_APP_IEX_API_KEY}`);
+            let response = await axios.get(`https://cloud.iexapis.com/stable/stock/${stock}/quote/?token=${secrets.iexKey}`);
             console.log(response.data)
+            setStock(response.data)
         }catch(error){
             console.log('err',error)
         } 
     }
+    const fetchStockChartData = async (stock) => {
+        try {
+            let response = await axios.get(`https://cloud.iexapis.com/stable/stock/${stock}/chart/?token=${secrets.iexKey}`)
+            console.log(response.data)
+            setChart(response.data)
+        }catch(error){
+            console.log('err', error)
+        }
+    }
+    
     return (
         <div>
             <form onSubmit={handleFormSubmit}>

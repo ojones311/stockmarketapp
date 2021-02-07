@@ -8,6 +8,7 @@ import StockPage from '../src/Components/StockPage'
 import AboutPage from '../src/Components/AboutPage'
 import './App.css';
 
+
 function App() {
   
   return (
