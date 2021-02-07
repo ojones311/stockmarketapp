@@ -1,6 +1,5 @@
 var express = require('express');
 const { FailedDependency } = require('http-errors');
-const db = require('../db');
 var router = express.Router();
 const Users = require('../Models/Users')
 

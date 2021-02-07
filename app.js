@@ -12,6 +12,7 @@ var stocksRouter = require('./routes/stocks');
 var userStocksRouter = require('./routes/user_stocks');
 var followersRouter = require('./routes/followers')
 
+require('dotenv').config()
 var app = express();
 
 // view engine setup
