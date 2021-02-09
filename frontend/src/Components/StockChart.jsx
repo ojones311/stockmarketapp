@@ -1,10 +1,14 @@
 import React, {useState} from 'react'
+import Chart from 'chart.js'
 import axios from 'axios'
 
 const StockChart = ({stock, chart}) => {
+    let chartRef = React.createRef();
+    const myLineGraph = new Chart(chartRef, {
+        type: 'line',
+        data: '',
 
-    const [stockChartXValue, setStockChartXValue] = useState(0)
-    const [stockChartYValue, setStockChartYValue] = useState(0)
+    })
 
     return(
         <div>
