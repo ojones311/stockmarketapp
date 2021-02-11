@@ -7,46 +7,50 @@ const StockChart = ({stock, chart}) => {
     let chartRef = useRef(null);
     const [chartInstance, setChartInstance] = useState(null)
 
-    const getDateLabels = (arr) =>{
+    const getDateLabels = (arr) => {
         let solutionArr = []
-        // let dateArr = arr.filter((elem) => elem.date)
-        // for(let i = 0; i < arr.length; i++){
-        //     if(arr[i].date){
-        //         solutionArr.push(arr[i].date)
-        //     }
-        // }
-        // console.log(arr)
-        // console.log(solutionArr)
-        // return dateArr
-     }
+        for(let i = 0; i < arr.length; i++){
+            if(arr[i].date){
+                solutionArr.push(arr[i].date)
+            }
+        }
+        return solutionArr
+    }
+    const getStockPrices = (arr) => {
+        let stockPricesArr = arr.map((stockPrice) => {
+            if(stockPrice.close){
+                return stockPrice.close
+            }
+        })
+        console.log(stockPricesArr)
+        return stockPricesArr
+    }
     let chartConfig = {
         type: 'line',
         data: {
             labels: getDateLabels(chart),
             datasets:[{
-                label:'Dates',
-                data: [12,3,4,5,6,7]
+                label:'Stock Price',
+                data: getStockPrices(chart)
             }]
         },
-        // options: {
-        //     scales: {
-        //         xAxes: [
-        //           {
-        //             type: 'time',
-        //             time: {
-        //               unit: 'week'
-        //             }
-        //           }
-        //         ],
-        //         yAxes: [
-        //           {
-        //             ticks: {
-        //               min: 0
-        //             }
-        //           }
-        //         ]
-        //       }
-        // }
+        options: {
+            scales: {
+                xAxes: [
+                  {
+                    type: 'time',
+                    time: {
+                      unit: 'day'
+                    }
+                  }
+                ],
+                yAxes: [
+                  {
+                    type: 'linear',
+                  }
+                ]
+              }
+        }
     }
 
     useEffect (() => {
@@ -54,41 +58,15 @@ const StockChart = ({stock, chart}) => {
             const newLineChart = new Chart(chartRef.current, chartConfig)
             setChartInstance(newLineChart)
         }
+        // if(chartInstance){
+        //     updateChart(0, chart)
+        // }
     },[chartRef])
 
     const updateChart = (chartIndex, chart) => {
         chartInstance.data.datasets[chartIndex].data = chart
-        chart.update()
+        chartInstance.update()
     }
-    // const myLineGraph = new Chart(chartRef, {
-    //     type: 'line',
-    //     data: {
-    //         labels: ['One', 'Two','Three', 'Four'],
-    //         datasets:[{
-    //             label:'Numbers',
-    //             data: [12,3,4,5,6,7]
-    //         }]
-    //     },
-    //     options: {
-    //         scales: {
-    //             xAxes: [
-    //               {
-    //                 type: 'time',
-    //                 time: {
-    //                   unit: 'week'
-    //                 }
-    //               }
-    //             ],
-    //             yAxes: [
-    //               {
-    //                 ticks: {
-    //                   min: 0
-    //                 }
-    //               }
-    //             ]
-    //           }
-    //     }
-    // })
 
     return(
         <div>
