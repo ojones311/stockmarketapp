@@ -2,6 +2,7 @@ import React, {useRef, useState, useEffect} from 'react'
 import Chart from 'chart.js'
 
 
+
 const StockChart = ({stock, chart}) => {
 
     let chartRef = useRef(null);
@@ -22,7 +23,7 @@ const StockChart = ({stock, chart}) => {
                 return stockPrice.close
             }
         })
-        console.log(stockPricesArr)
+        // console.log(stockPricesArr)
         return stockPricesArr
     }
     let chartConfig = {
@@ -52,21 +53,17 @@ const StockChart = ({stock, chart}) => {
               }
         }
     }
-
-    useEffect (() => {
-        if(chartRef && chartRef.current){
-            const newLineChart = new Chart(chartRef.current, chartConfig)
-            setChartInstance(newLineChart)
+    const buildChart = () => { 
+        if(chartInstance){
+            chartInstance.destroy()
         }
-        // if(chartInstance){
-        //     updateChart(0, chart)
-        // }
-    },[chartRef])
-
-    const updateChart = (chartIndex, chart) => {
-        chartInstance.data.datasets[chartIndex].data = chart
-        chartInstance.update()
+        let newChartInstance = new Chart(chartRef.current, chartConfig)
+        setChartInstance(newChartInstance)
     }
+
+    useEffect(() => {
+        buildChart()
+    },[chart])
 
     return(
         <div>
