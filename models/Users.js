@@ -12,7 +12,7 @@ getAllUsers = async () => {
 
 getUserById = async (userId) =>{
     try{
-        let query = `SELECT * FROM users WHERE (user_id=$1 AND is_deleted=false)`
+        let query = `SELECT * FROM users WHERE (id=$1 AND is_deleted=false)`
         const user = await db.one(query,[userId])
         return user
     }catch(error){
