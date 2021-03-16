@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React,{useEffect} from 'react'
+import React,{useState, useEffect} from 'react'
 import url from '../apiURL'
 
 const UserList = () => {
@@ -16,17 +16,25 @@ const UserList = () => {
             console.log('err', error)
         }
     }
-    const displayUsers = () => {
-        if(userList.length > 0){
-            
-        }
-    }
+
     useEffect(() => {
        fetchUserList()
-    },[userList])
+    },[])
+
     return (
         <div>
             <h3>UserList</h3>
+            {
+            userList.map((elem) => {
+                return(
+                    <div>
+                        <img src={elem.avatar_url}></img>
+                        <h4>{elem.username}</h4>
+                        <p>{elem.email}</p>
+                    </div>
+                )
+            })
+        }
         </div>
     )
 }
