@@ -1,9 +1,10 @@
 import React, {useRef, useState, useEffect} from 'react'
+import {useHistory} from 'react-router-dom'
 import Chart from 'chart.js'
 
 
-
 const StockChart = ({stock, chart}) => {
+    let history = useHistory()
 
     let chartRef = useRef(null);
     const [chartInstance, setChartInstance] = useState(null)
@@ -61,6 +62,10 @@ const StockChart = ({stock, chart}) => {
         setChartInstance(newChartInstance)
     }
 
+    const redirectToStockPage = () => {
+        history.push(`/stocks/${stock.symbol}`)
+    }
+
     useEffect(() => {
         buildChart()
     },[chart])
@@ -69,7 +74,7 @@ const StockChart = ({stock, chart}) => {
         <div>
             <div className='title'>
                 <span>
-                <h2>{stock.companyName}</h2>
+                <h2 onClick={redirectToStockPage}>{stock.companyName}</h2>
                 <h3>{stock.symbol}</h3>
                 <p>{stock.latestTime}</p>
                 </span>
