@@ -16,26 +16,19 @@ const StockPage = (props) => {
             console.log('err', error)
         }
     }
+    
+    useEffect(()=> {
+        fetchStockInfo()
+    },[])
 
-
-
-    const displayStockData = async() => {
-        await fetchStockInfo()
-
-        for(let stock in stockData){
-            console.log(stock)
-            return (
-                <div>
-                    <h4>{stock.companyName}</h4>
-                    <p>{stock.description}</p>
-                    <a href={stock.website}></a>
-                </div>
-            )
-        }
-    }
     return (
         <div>
-            <button onClick={displayStockData}>Click</button>
+           <div className='stockInfo'>
+                <h2>{stockData.companyName}</h2>
+                <h4>{stockData.symbol}</h4>
+                <a href={stockData.website}>{stockData.website}</a>
+                <p>{stockData.description}</p>
+           </div>
         </div>
     )
 }
