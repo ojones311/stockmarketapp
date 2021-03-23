@@ -7,7 +7,7 @@ const NavBar = () => {
             <Link to='/'>Home</Link>{" "}
             <Link to='/about'>About</Link>{" "}
             <Link to='/users'>Users</Link>{" "}
-            <Link to='/profile'>Profile</Link>{" "}
+            {/* <Link to='/profile'>Profile</Link>{" "} */}
             {/* <Link to='/stock'>Stock Page</Link>{" "} */}
         </div>
     )

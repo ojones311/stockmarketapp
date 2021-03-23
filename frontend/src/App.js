@@ -18,7 +18,7 @@ function App() {
       <Switch>
             <Route exact path= "/" component={LandingPage}/>
             {/* <Route path='/dashboard' component={SearchStockForm}/> */}
-            <Route path="/profile/:id" component={UserProfile}/>
+            {/* <Route path="/profile/:id" component={UserProfile}/> */}
             <Route path='/users'  component={UserList}/>
             <Route path='/stocks/:symbol' component={StockPage}/>
             <Route path='/about'  component={AboutPage}/>

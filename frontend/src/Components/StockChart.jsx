@@ -8,6 +8,7 @@ const StockChart = ({stock, chart}) => {
 
     let chartRef = useRef(null);
     const [chartInstance, setChartInstance] = useState(null)
+    const [stockPrices, setStockPrices] = useState([])
 
     const getDateLabels = (arr) => {
         let solutionArr = []
@@ -24,9 +25,16 @@ const StockChart = ({stock, chart}) => {
                 return stockPrice.close
             }
         })
-        // console.log(stockPricesArr)
+        console.log(stockPricesArr)
         return stockPricesArr
     }
+    
+    const getYAxisFloor = (arr) => {
+        let sortedArr = arr.sort((a,b) => a - b)
+        let yFloor = sortedArr[0] * .90
+        return yFloor
+    }
+
     let chartConfig = {
         type: 'line',
         data: {
@@ -49,6 +57,9 @@ const StockChart = ({stock, chart}) => {
                 yAxes: [
                   {
                     type: 'linear',
+                    ticks: {
+                        min: getYAxisFloor(getStockPrices(chart))
+                    }
                   }
                 ]
               }
