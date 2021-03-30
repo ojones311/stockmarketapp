@@ -30,9 +30,8 @@ const StockChart = ({stock, chart}) => {
     }
     
     const getYAxisFloor = (arr) => {
-        let sortedArr = arr.sort((a,b) => a - b)
-        let yFloor = sortedArr[0] * .90
-        return yFloor
+        let yFloor = Math.min(...arr)
+        return yFloor * .95
     }
 
     let chartConfig = {
@@ -41,7 +40,8 @@ const StockChart = ({stock, chart}) => {
             labels: getDateLabels(chart),
             datasets:[{
                 label:'Stock Price',
-                data: getStockPrices(chart)
+                data: getStockPrices(chart),
+                lineTension: 0
             }]
         },
         options: {
@@ -62,7 +62,8 @@ const StockChart = ({stock, chart}) => {
                     }
                   }
                 ]
-              }
+              },
+            //   lineTension: 0
         }
     }
     const buildChart = () => { 

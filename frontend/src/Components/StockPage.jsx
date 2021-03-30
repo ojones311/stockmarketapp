@@ -29,6 +29,16 @@ const StockPage = (props) => {
             console.log(err)
         }
     }
+    const handleStockInformation = async () => {
+        if(Object.keys(stockStats).length === 0){
+            await fetchStockStats()
+        }
+        if(moreInfo){
+            setMoreInfo(false)
+        }else if(!moreInfo){
+            setMoreInfo(true)
+        }
+    }
     
     useEffect(()=> {
         fetchStockInfo()
@@ -43,7 +53,7 @@ const StockPage = (props) => {
                 <p>{stockData.description}</p>
            </div>
            <div className= 'more-info-button'>
-                <button onClick={fetchStockStats}>More Info</button>
+                <button onClick={handleStockInformation}>More Info</button>
            </div>
            {moreInfo ? <div className='stock-stats'>
                <p>{'52 Week High: '}{stockStats.week52high}</p>
