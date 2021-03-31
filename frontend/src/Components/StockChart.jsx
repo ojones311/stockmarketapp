@@ -1,6 +1,7 @@
 import React, {useRef, useState, useEffect} from 'react'
 import {useHistory} from 'react-router-dom'
 import Chart from 'chart.js'
+import '../Styles/StockChart.css'
 
 
 const StockChart = ({stock, chart}) => {
@@ -86,8 +87,8 @@ const StockChart = ({stock, chart}) => {
         <div>
             <div className='title'>
                 <span>
-                <h2 onClick={redirectToStockPage}>{stock.companyName}</h2>
-                <h3>{stock.symbol}</h3>
+                <h2 id='title-link-sp' onClick={redirectToStockPage}>{stock.companyName}</h2>
+                <h3 id='ticker-link-sp' onClick={redirectToStockPage}>{stock.symbol}</h3>
                 <p>{stock.latestTime}</p>
                 </span>
            </div>

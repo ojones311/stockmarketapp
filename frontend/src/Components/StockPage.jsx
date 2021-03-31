@@ -88,10 +88,10 @@ const StockPage = (props) => {
            <div className='toggleNews-button'>
                 <button onClick={handleStockNews}>Related News</button>
            </div>
-           
+
            {toggleNews ? stockNews.map((article) => {
                return (
-                 <div>
+                 <div >
                      <h5>{article.source}</h5>
                      <p>{article.headline}</p>
                      <p>{article.summary}</p>
