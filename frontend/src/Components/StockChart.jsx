@@ -25,7 +25,7 @@ const StockChart = ({stock, chart}) => {
                 return stockPrice.close
             }
         })
-        console.log(stockPricesArr)
+        // console.log(stockPricesArr)
         return stockPricesArr
     }
     

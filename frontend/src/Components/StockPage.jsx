@@ -5,7 +5,10 @@ import secrets from '../secrets'
 const StockPage = (props) => {
     const [stockData, setStockData] = useState({})
     const [stockStats, setStockStats] = useState({})
+    const [stockNews, setStockNews] = useState([])
+
     const [moreInfo, setMoreInfo] = useState(false)
+    const [toggleNews, setToggleNews] = useState(false)
 
     const fetchStockInfo = async () => {
         try{
@@ -29,17 +32,36 @@ const StockPage = (props) => {
             console.log(err)
         }
     }
+    const fetchCompanyNews = async () => {
+        try{
+            let response = await axios.get(`https://cloud-sse.iexapis.com/stable/stock/${props.match.params.symbol}/news/last/3/?token=${secrets.iexKey}`)
+            let newsData = response.data
+            setStockNews(newsData)
+        }catch(error){
+            console.log(error)
+        }
+    }
     const handleStockInformation = async () => {
         if(Object.keys(stockStats).length === 0){
             await fetchStockStats()
         }
         if(moreInfo){
-            setMoreInfo(false)
+            setMoreInfo(false) 
         }else if(!moreInfo){
             setMoreInfo(true)
         }
     }
-    
+
+    const handleStockNews = async () => {
+        if(stockNews.length < 0){
+            await fetchCompanyNews()
+        }
+        if(toggleNews){
+            setToggleNews(false)
+        }else if(!toggleNews){
+            setToggleNews(true)
+        }
+    }
     useEffect(()=> {
         fetchStockInfo()
     },[])
@@ -59,9 +81,11 @@ const StockPage = (props) => {
                <p>{'52 Week High: '}{stockStats.week52high}</p>
                <p>{'52 Week Low: '}{stockStats.week52low}</p>
                <p>{'YTD Change Percentage: '}{stockStats.ytdChangePercent}</p>
-               <p>{'Market Cap: '}{stockStats.marketcap}</p>
+               <p>{'Market Cap: '}{stockStats.marketcap.toLocaleString()}</p>
            </div> : <div></div>}
-           
+           <div className='toggleNews-button'>
+                <button onClick={handleStockNews}>Related News</button>
+           </div>
         </div>
     )
 }
