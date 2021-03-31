@@ -34,9 +34,10 @@ const StockPage = (props) => {
     }
     const fetchCompanyNews = async () => {
         try{
-            let response = await axios.get(`https://cloud-sse.iexapis.com/stable/stock/${props.match.params.symbol}/news/last/3/?token=${secrets.iexKey}`)
+            let response = await axios.get(`https://cloud.iexapis.com/stable/stock/${props.match.params.symbol}/news/last/3/?token=${secrets.iexKey}`)
             let newsData = response.data
             setStockNews(newsData)
+            console.log(newsData)
         }catch(error){
             console.log(error)
         }
@@ -53,7 +54,7 @@ const StockPage = (props) => {
     }
 
     const handleStockNews = async () => {
-        if(stockNews.length < 0){
+        if(stockNews.length < 1){
             await fetchCompanyNews()
         }
         if(toggleNews){
@@ -77,15 +78,26 @@ const StockPage = (props) => {
            <div className= 'more-info-button'>
                 <button onClick={handleStockInformation}>More Info</button>
            </div>
+
            {moreInfo ? <div className='stock-stats'>
-               <p>{'52 Week High: '}{stockStats.week52high}</p>
-               <p>{'52 Week Low: '}{stockStats.week52low}</p>
-               <p>{'YTD Change Percentage: '}{stockStats.ytdChangePercent}</p>
-               <p>{'Market Cap: '}{stockStats.marketcap.toLocaleString()}</p>
+               <p><b>{'52 Week High: '}</b>{stockStats.week52high}</p>
+               <p><b>{'52 Week Low: '}</b>{stockStats.week52low}</p>
+               <p><b>{'YTD Change Percentage: '}</b>{stockStats.ytdChangePercent}</p>
+               <p><b>{'Market Cap: '}</b>{stockStats.marketcap.toLocaleString()}</p>
            </div> : <div></div>}
            <div className='toggleNews-button'>
                 <button onClick={handleStockNews}>Related News</button>
            </div>
+           
+           {toggleNews ? stockNews.map((article) => {
+               return (
+                 <div>
+                     <h5>{article.source}</h5>
+                     <p>{article.headline}</p>
+                     <p>{article.summary}</p>
+                </div>
+               )
+           }): <div></div>}
         </div>
     )
 }
