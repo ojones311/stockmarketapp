@@ -26,13 +26,17 @@ const StockChart = ({stock, chart}) => {
                 return stockPrice.close
             }
         })
-        // console.log(stockPricesArr)
         return stockPricesArr
     }
     
     const getYAxisFloor = (arr) => {
         let yFloor = Math.min(...arr)
         return yFloor * .95
+    }
+
+    const setRandomColor = () => {
+        let randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+         return randomColor
     }
 
     let chartConfig = {
@@ -42,7 +46,8 @@ const StockChart = ({stock, chart}) => {
             datasets:[{
                 label:'Stock Price',
                 data: getStockPrices(chart),
-                lineTension: 0
+                lineTension: 0,
+                borderColor: setRandomColor(),
             }]
         },
         options: {
@@ -64,7 +69,6 @@ const StockChart = ({stock, chart}) => {
                   }
                 ]
               },
-            //   lineTension: 0
         }
     }
     const buildChart = () => { 
@@ -86,11 +90,9 @@ const StockChart = ({stock, chart}) => {
     return(
         <div>
             <div className='title'>
-                <span>
                 <h2 id='title-link-sp' onClick={redirectToStockPage}>{stock.companyName}</h2>
                 <h3 id='ticker-link-sp' onClick={redirectToStockPage}>{stock.symbol}</h3>
                 <p>{stock.latestTime}</p>
-                </span>
            </div>
            <div>
                 <canvas id='myLineChart' ref={chartRef} />

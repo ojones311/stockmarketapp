@@ -1,6 +1,7 @@
 import React,{useState, useEffect} from 'react'
 import axios from 'axios'
 import secrets from '../secrets'
+import '../Styles/StockPage.css'
 
 const StockPage = (props) => {
     const [stockData, setStockData] = useState({})
@@ -68,7 +69,7 @@ const StockPage = (props) => {
     },[])
 
     return (
-        <div>
+        <div className='stock-page'>
            <div className='stockInfo'>
                 <h2>{stockData.companyName}</h2>
                 <h4>{stockData.symbol}</h4>
@@ -76,7 +77,7 @@ const StockPage = (props) => {
                 <p>{stockData.description}</p>
            </div>
            <div className= 'more-info-button'>
-                <button onClick={handleStockInformation}>More Info</button>
+                <button onClick={handleStockInformation}>Show Financials</button>
            </div>
 
            {moreInfo ? <div className='stock-stats'>
@@ -86,14 +87,14 @@ const StockPage = (props) => {
                <p><b>{'Market Cap: '}</b>{stockStats.marketcap.toLocaleString()}</p>
            </div> : <div></div>}
            <div className='toggleNews-button'>
-                <button onClick={handleStockNews}>Related News</button>
+                <button onClick={handleStockNews}>Show Related News</button>
            </div>
 
            {toggleNews ? stockNews.map((article) => {
                return (
                  <div >
                      <h5>{article.source}</h5>
-                     <p>{article.headline}</p>
+                     <p id='article-headline'>{article.headline}</p>
                      <p>{article.summary}</p>
                 </div>
                )
