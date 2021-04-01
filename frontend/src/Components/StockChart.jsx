@@ -4,13 +4,13 @@ import Chart from 'chart.js'
 import '../Styles/StockChart.css'
 
 
-const StockChart = ({stock, chart}) => {
+const StockChart = ({stock, chart, showChart}) => {
     let history = useHistory()
 
     let chartRef = useRef(null);
     const [chartInstance, setChartInstance] = useState(null)
     const [stockPrices, setStockPrices] = useState([])
-
+    
     const getDateLabels = (arr) => {
         let solutionArr = []
         for(let i = 0; i < arr.length; i++){
@@ -84,17 +84,23 @@ const StockChart = ({stock, chart}) => {
     }
 
     useEffect(() => {
-        buildChart()
+        if(showChart){
+            buildChart()
+        } 
     },[chart])
 
     return(
         <div>
+            {showChart ? 
             <div className='title'>
                 <h2 id='title-link-sp' onClick={redirectToStockPage}>{stock.companyName}</h2>
                 <h3 id='ticker-link-sp' onClick={redirectToStockPage}>{stock.symbol}</h3>
+                <p>{'Change: '}{stock.change}</p>
+                <p>{'Change Percent: '}{stock.changePercent}</p>
                 <p>{stock.latestTime}</p>
-           </div>
-           <div>
+           </div>: <div></div>}   
+
+           <div className= 'chart-instance'>
                 <canvas id='myLineChart' ref={chartRef} />
            </div>
         </div>

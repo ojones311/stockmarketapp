@@ -94,7 +94,7 @@ const StockPage = (props) => {
                return (
                  <div >
                      <h5>{article.source}</h5>
-                     <p id='article-headline'>{article.headline}</p>
+                     <a href={article.url}>{article.headline}</a>
                      <p>{article.summary}</p>
                 </div>
                )

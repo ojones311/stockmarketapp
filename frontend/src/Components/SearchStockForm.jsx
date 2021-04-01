@@ -3,11 +3,12 @@ import useSubmitForm from '../Components/useSubmitForm'
 import axios from 'axios'
 import secrets from '../secrets' 
 
-const SearchStockForm = ({setStock, setChart}) => {
+const SearchStockForm = ({setStock, setChart,setShowChart}) => {
 
     const {values, handleFormChange, handleFormSubmit} = useSubmitForm(() => {
         fetchStockQuoteValues(values.stock)
         fetchStockChartData(values.stock)
+        setShowChart(true)
     } )
 
     const fetchStockQuoteValues = async (stock) => {
