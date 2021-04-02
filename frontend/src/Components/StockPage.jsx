@@ -64,6 +64,11 @@ const StockPage = (props) => {
             setToggleNews(true)
         }
     }
+    
+    const truncateNumber = (num) => {
+       return Number.parseFloat(num).toFixed(4)
+    }
+
     useEffect(()=> {
         fetchStockInfo()
     },[])
@@ -79,11 +84,12 @@ const StockPage = (props) => {
            <div className= 'more-info-button'>
                 <button onClick={handleStockInformation}>Show Financials</button>
            </div>
-
+        
            {moreInfo ? <div className='stock-stats'>
                <p><b>{'52 Week High: '}</b>{stockStats.week52high}</p>
                <p><b>{'52 Week Low: '}</b>{stockStats.week52low}</p>
-               <p><b>{'YTD Change Percentage: '}</b>{stockStats.ytdChangePercent}</p>
+               <p><b>{'YTD Change Percentage: '}</b>{truncateNumber(stockStats.ytdChangePercent)}</p>
+               <p><b>{'Price to Earnings Ratio: '}</b>{truncateNumber(stockStats.peRatio)}</p>
                <p><b>{'Market Cap: '}</b>{stockStats.marketcap.toLocaleString()}</p>
            </div> : <div></div>}
            <div className='toggleNews-button'>
