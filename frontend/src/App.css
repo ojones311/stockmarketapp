@@ -5,6 +5,10 @@
 /* .App-body {
   width: 90%;
 } */
+.header {
+  width: 70%;
+  margin: 0 auto;
+}
 
 .nav-bar {
   text-align: center;

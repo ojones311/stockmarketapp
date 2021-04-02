@@ -2,6 +2,7 @@ import React from 'react'
 import useSubmitForm from '../Components/useSubmitForm'
 import axios from 'axios'
 import secrets from '../secrets' 
+import '../Styles/SearchStockForm.css'
 
 const SearchStockForm = ({setStock, setChart,setShowChart}) => {
 
@@ -33,7 +34,7 @@ const SearchStockForm = ({setStock, setChart,setShowChart}) => {
     return (
         <div>
             <form onSubmit={handleFormSubmit}>
-                <input type='text' placeholder='Quote lookup' name='stock' onChange={handleFormChange} value={values.stock || ''} required/>
+                <input id='stock-search' type='text' placeholder='Quote lookup' name='stock' onChange={handleFormChange} value={values.stock || ''} required/>
                 <button type='submit'>Search</button>
             </form>
         </div>

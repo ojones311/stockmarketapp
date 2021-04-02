@@ -64,7 +64,7 @@ const StockPage = (props) => {
             setToggleNews(true)
         }
     }
-    
+
     const truncateNumber = (num) => {
        return Number.parseFloat(num).toFixed(4)
     }
