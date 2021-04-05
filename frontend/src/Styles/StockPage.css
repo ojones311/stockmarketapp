@@ -7,7 +7,7 @@
     padding: 20px;
     margin: 10px;
     background-color: beige;
-    border: 3px solid black;
+    border: .5px solid black;
     border-radius: 10px;
 }
 
@@ -15,7 +15,7 @@
     padding: 20px;
     margin: 10px;
     background-color: #F7C9B6;
-    border: 3px solid black;
+    border: .5px solid black;
     border-radius: 10px;
 }
 
@@ -25,7 +25,16 @@
     width: 70%;
     border-bottom: 2px solid #F6F8FA
 }
+
 #article-headline {
     text-decoration: underline;
 }
 
+.more-info-button {
+    text-align: center;
+}
+
+.toggleNews-button {
+    text-align: center;
+
+}
