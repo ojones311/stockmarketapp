@@ -3,6 +3,29 @@
     margin: 0 auto;
 }
 
+.stockInfo {
+    padding: 20px;
+    margin: 10px;
+    background-color: beige;
+    border: 3px solid black;
+    border-radius: 10px;
+}
+
+.stock-stats {
+    padding: 20px;
+    margin: 10px;
+    background-color: #F7C9B6;
+    border: 3px solid black;
+    border-radius: 10px;
+}
+
+.stock-news {
+    padding: 20px;
+    margin: 10px;
+    width: 70%;
+    border-bottom: 2px solid #F6F8FA
+}
 #article-headline {
     text-decoration: underline;
 }
+

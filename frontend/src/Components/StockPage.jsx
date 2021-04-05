@@ -98,7 +98,7 @@ const StockPage = (props) => {
 
            {toggleNews ? stockNews.map((article) => {
                return (
-                 <div >
+                 <div className='stock-news'>
                      <h5>{article.source}</h5>
                      <a href={article.url}>{article.headline}</a>
                      <p>{article.summary}</p>

@@ -4,12 +4,12 @@ import '../App.css'
 
 const NavBar = () => {
     return(
-        <div className='nav-bar'>
-            <h1 class='logo'>Speculator</h1>
+        <div className='nav-bar'>    
             <div className='container flex'>
-                <Link to='/'>Home</Link>{" "}
-                <Link to='/about'>About</Link>{" "}
-                <Link to='/users'>Users</Link>{" "}
+                <h1 class='logo'>Speculator</h1>
+                <ul><Link to='/'>Home</Link>{" "}</ul>
+                <ul><Link to='/about'>About</Link>{" "}</ul>
+                <ul><Link to='/users'>Users</Link>{" "}</ul>
             </div>
         </div>
     )
