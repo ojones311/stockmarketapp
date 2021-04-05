@@ -10,7 +10,6 @@ const LandingPage = () => {
     return (
         <div>
             <div className='header'>
-                <h2>Welcome to Speculator</h2>
                 <SearchStockForm stock={stock} chart={chart} setStock={setStock} setChart={setChart} setShowChart={setShowChart}/>
             </div>
             <div className='body'>

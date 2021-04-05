@@ -1,15 +1,26 @@
-/* .App {
-  text-align: center;
-} */
+.App {
+  height: 100vh;
+}
 
-/* .App-body {
-  width: 90%;
-} */
 .header {
   width: 70%;
+  padding:  20px;
   margin: 0 auto;
 }
 
 .nav-bar {
-  text-align: center;
+  background-color: orange;
+  height: 80px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  overflow: auto;
+  padding: 0 40px;
+}
+
+.flex{
+  display: flex;
+  justify-content: center;
 }

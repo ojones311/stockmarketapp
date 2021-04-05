@@ -5,11 +5,12 @@ import '../App.css'
 const NavBar = () => {
     return(
         <div className='nav-bar'>
-            <Link to='/'>Home</Link>{" "}
-            <Link to='/about'>About</Link>{" "}
-            <Link to='/users'>Users</Link>{" "}
-            {/* <Link to='/profile'>Profile</Link>{" "} */}
-            {/* <Link to='/stock'>Stock Page</Link>{" "} */}
+            <h1 class='logo'>Speculator</h1>
+            <div className='container flex'>
+                <Link to='/'>Home</Link>{" "}
+                <Link to='/about'>About</Link>{" "}
+                <Link to='/users'>Users</Link>{" "}
+            </div>
         </div>
     )
 }
