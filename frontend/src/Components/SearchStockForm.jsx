@@ -30,11 +30,26 @@ const SearchStockForm = ({setStock, setChart,setShowChart}) => {
             console.log('err', error)
         }
     }
-    
+    //fetch symbols and map the results to its own option tag and return
+    const fetchIEXSymbols = async () => {
+        try{
+           let response = await axios.get(`https://cloud.iexapis.com/stable/ref-data/symbols/?token=${secrets.iexKey}`)
+           console.log(response.data)
+        }catch(error){
+            console.log('err',error)
+        }
+    }
+
+    const renderDropdownOptions = () => {
+
+    }
     return (
         <div>
             <form onSubmit={handleFormSubmit}>
                 <input id='stock-search' type='text' placeholder='Quote lookup' name='stock' onChange={handleFormChange} value={values.stock || ''} required/>
+                <select>
+
+                </select>
                 <button type='submit'>Search</button>
             </form>
         </div>

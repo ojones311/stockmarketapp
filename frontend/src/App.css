@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Lato&family=Oswald&display=swap');
 
 .App {
   height: 100vh;
@@ -14,7 +14,7 @@
 .nav-bar {
   display: flex;
   background-color: #DAE7DD;
-  height: 80px;
+  height: 100px;
 }
 
 .nav-bar ul{
@@ -39,6 +39,10 @@
 }
 
 h1,h2,h3 {
+  font-family: Oswald;
+}
+
+h5 {
   font-family: Roboto;
 }
 
