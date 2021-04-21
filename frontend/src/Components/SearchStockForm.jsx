@@ -7,8 +7,8 @@ import '../Styles/SearchStockForm.css'
 const SearchStockForm = ({setStock, setChart,setShowChart}) => {
 
     const {values, handleFormChange, handleFormSubmit} = useSubmitForm(() => {
-        fetchStockQuoteValues(values.stock)
-        fetchStockChartData(values.stock)
+        fetchStockQuoteValues(values.browser)
+        fetchStockChartData(values.browser)
         setShowChart(true)
     } )
 
@@ -52,10 +52,8 @@ const SearchStockForm = ({setStock, setChart,setShowChart}) => {
     return (
         <div>
             <form onSubmit={handleFormSubmit}>
-                {/* <input id='stock-search' type='text' placeholder='Quote lookup' name='stock' onChange={handleFormChange} value={values.stock || ''} required/> */}
-    
                 <input list="browsers" name="browser" id="browser" onChange={handleFormChange} required/>
-                <datalist id="browsers">
+                <datalist id="browsers" onChange={handleFormChange}>
                     {symbols.map((elem, key) => 
                         <option key={key} value={elem.symbol}>{elem.symbol}:{elem.name}</option>
                     )}
