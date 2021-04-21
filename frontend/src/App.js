@@ -1,4 +1,5 @@
 import React from 'react'
+import {AuthProvider} from './context/AuthContext'
 import {Route, Switch} from 'react-router-dom'
 import NavBar from '../src/Components/NavBar'
 import LandingPage from '../src/Components/LandingPage'
@@ -14,12 +15,14 @@ function App() {
     <div className="App">
       <NavBar />
       <div className='App-body'>
-      <Switch>
-            <Route exact path= "/" component={LandingPage}/>
-            <Route path='/users'  component={UserList}/>
-            <Route path='/stocks/:symbol' component={StockPage}/>
-            <Route path='/about'  component={AboutPage}/>
-          </Switch>
+      <AuthProvider>
+        <Switch>
+              <Route exact path= "/" component={LandingPage}/>
+              <Route path='/users'  component={UserList}/>
+              <Route path='/stocks/:symbol' component={StockPage}/>
+              <Route path='/about'  component={AboutPage}/>
+        </Switch>
+      </AuthProvider>
       </div>
     </div>
   );
