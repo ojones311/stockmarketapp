@@ -95,6 +95,7 @@ const StockChart = ({stock, chart, showChart}) => {
             <div className='title'>
                 <h2 id='title-link-sp' onClick={redirectToStockPage}>{stock.companyName}</h2>
                 <h3 id='ticker-link-sp' onClick={redirectToStockPage}>{stock.symbol}</h3>
+                <p>{'Price: '}{stock.latestPrice}</p>
                 <p>{'Change: '}{stock.change}</p>
                 <p>{'Change Percent: '}{stock.changePercent}</p>
                 <p>{stock.latestTime}</p>
