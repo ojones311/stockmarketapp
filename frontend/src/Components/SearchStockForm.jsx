@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect, useState} from 'react'
 import useSubmitForm from '../Components/useSubmitForm'
 import axios from 'axios'
 import secrets from '../secrets' 
@@ -11,6 +11,8 @@ const SearchStockForm = ({setStock, setChart,setShowChart}) => {
         fetchStockChartData(values.stock)
         setShowChart(true)
     } )
+
+    const [symbols, setSymbols] = useState([])
 
     const fetchStockQuoteValues = async (stock) => {
         try{
@@ -35,22 +37,30 @@ const SearchStockForm = ({setStock, setChart,setShowChart}) => {
         try{
            let response = await axios.get(`https://cloud.iexapis.com/stable/ref-data/symbols/?token=${secrets.iexKey}`)
            console.log(response.data)
+           setSymbols(response.data)
         }catch(error){
             console.log('err',error)
         }
     }
 
-    const renderDropdownOptions = () => {
-
-    }
+    useEffect(() => {
+        if(symbols.length === 0){
+            fetchIEXSymbols()
+        }
+        
+    },[symbols])
     return (
         <div>
             <form onSubmit={handleFormSubmit}>
-                <input id='stock-search' type='text' placeholder='Quote lookup' name='stock' onChange={handleFormChange} value={values.stock || ''} required/>
-                <select>
-
-                </select>
-                <button type='submit'>Search</button>
+                {/* <input id='stock-search' type='text' placeholder='Quote lookup' name='stock' onChange={handleFormChange} value={values.stock || ''} required/> */}
+    
+                <input list="browsers" name="browser" id="browser" onChange={handleFormChange} required/>
+                <datalist id="browsers">
+                    {symbols.map((elem, key) => 
+                        <option key={key} value={elem.symbol}>{elem.symbol}:{elem.name}</option>
+                    )}
+                </datalist>
+                <input type="submit"></input>
             </form>
         </div>
     )
