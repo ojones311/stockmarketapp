@@ -22,7 +22,7 @@ const Signup = () => {
         const password = passwordRef.current.value
         const username = usernameRef.current.value
 
-        signup(email,password,username)
+        signup(email, password, username)
             .then((ref) => {
                 setLoading(false)
                 history.push('/')
@@ -35,6 +35,15 @@ const Signup = () => {
     return (
         <div>
             <p>Signup</p>
+            <form onSubmit={(e) => handleSignup(e)}>
+                <input type='text' ref={emailRef}></input>
+                <input type='text' ref={usernameRef}></input>
+                <input type='text' ref={passwordRef}></input>
+                <button type='submit' disabled={loading}>Submit</button>
+                <div>
+                    {error}
+                </div>
+            </form>
         </div>
     )
 }

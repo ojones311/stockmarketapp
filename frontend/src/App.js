@@ -21,9 +21,9 @@ function App() {
         <Switch>
               <Route exact path= "/" component={LandingPage}/>
               <Route path='/profile' component={UserProfile} />
-              <Route path='accounts/signup' component={Signup} />
-              <Route path='accounts/signin' component={Signin} />
-              <Route path='accounts/password/reset' component={ResetPassword} />
+              <Route path='/accounts/signup' component={Signup} />
+              <Route path='/accounts/signin' component={Signin} />
+              {/* <Route path='accounts/password/reset' component={ResetPassword} /> */}
               <Route path='/users'  component={UserList}/>
               <Route path='/stocks/:symbol' component={StockPage}/>
               <Route path='/about'  component={AboutPage}/>
