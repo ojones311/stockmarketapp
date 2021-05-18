@@ -11,7 +11,7 @@ const Signup = () => {
     const usernameRef = useRef()
     const passwordRef = useRef()
 
-    const { signup } = useAuth()
+    const { signup, currentUser } = useAuth()
     const history = useHistory()
 
     const handleSignup = (e) => {
@@ -21,7 +21,7 @@ const Signup = () => {
         const email = emailRef.current.value
         const password = passwordRef.current.value
         const username = usernameRef.current.value
-
+        
         signup(email, password, username)
             .then((ref) => {
                 setLoading(false)
@@ -36,14 +36,18 @@ const Signup = () => {
         <div>
             <p>Signup</p>
             <form onSubmit={(e) => handleSignup(e)}>
-                <input type='text' ref={emailRef}></input>
-                <input type='text' ref={usernameRef}></input>
+                <label for='email'>Email</label>
+                <input type='text' ref={emailRef} id='email'></input>
+                <label for='username'>Username</label>
+                <input type='text' ref={usernameRef} id={'username'}></input>
+                <label for='password'>Password</label>
                 <input type='text' ref={passwordRef}></input>
                 <button type='submit' disabled={loading}>Submit</button>
                 <div>
                     {error}
                 </div>
             </form>
+            {currentUser && currentUser.email}
         </div>
     )
 }

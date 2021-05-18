@@ -5,8 +5,8 @@ const Signin = () => {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
 
-    let emailRef = useRef()
-    let passwordRef = useRef()
+    const emailRef = useRef()
+    const passwordRef = useRef()
 
     const { signin } = useAuth()
     const history = useHistory()
@@ -25,7 +25,7 @@ const Signin = () => {
                 setLoading(false)
                 history.push('/')
             })
-            .catch((err)=> {
+            .catch((err) => {
                 setError(err.message)
                 setLoading(false)
             })
