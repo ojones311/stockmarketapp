@@ -8,7 +8,7 @@ const Signin = () => {
     const emailRef = useRef()
     const passwordRef = useRef()
 
-    const { signin } = useAuth()
+    const {signin} = useAuth()
     const history = useHistory()
 
     const handleSignin = (e) => {
@@ -34,7 +34,9 @@ const Signin = () => {
         <div>
             <p>Signin</p>
             <form onSubmit={(e)=> handleSignin(e)}>
+                <label for='email'>Email</label>
                 <input type='text' ref={emailRef}></input>
+                <label for='password'>Password</label>
                 <input type='text' ref={passwordRef}></input>
                 <button type='submit' disabled={loading}>Submit</button> 
             </form>
