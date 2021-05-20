@@ -1,5 +1,6 @@
-import react,{useState, useRef, useHistory, useAuth} from 'react'
-
+import React,{useState, useRef} from 'react'
+import {useHistory} from 'react-router-dom'
+import {useAuth} from '../context/AuthContext'
 const Signin = () => {
 
     const [loading, setLoading] = useState(false)
@@ -8,7 +9,7 @@ const Signin = () => {
     const emailRef = useRef()
     const passwordRef = useRef()
 
-    const {signin} = useAuth()
+    const { signin } = useAuth()
     const history = useHistory()
 
     const handleSignin = (e) => {

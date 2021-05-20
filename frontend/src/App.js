@@ -2,6 +2,7 @@ import React from 'react'
 import {AuthProvider} from './context/AuthContext'
 import {Route, Switch} from 'react-router-dom'
 import NavBar from '../src/Components/NavBar'
+import PrivateRoute from '../src/Components/PrivateRoute'
 import AuthDashboard from '../src/Components/AuthDashboard'
 import LandingPage from '../src/Components/LandingPage'
 import UserProfile from '../src/Components/UserProfile'
@@ -20,7 +21,7 @@ function App() {
       <div className='App-body'>
       <AuthProvider>
         <Switch>
-              <Route exact path= "/" component={AuthDashboard}/>
+              <PrivateRoute exact path= "/" component={AuthDashboard}/>
               <Route path = '/home' component={LandingPage} />
               <Route path='/profile' component={UserProfile} />
               <Route path='/accounts/signup' component={Signup} />

@@ -42,7 +42,7 @@ export const AuthProvider = ({children}) => {
          return promise
     }
     const signout = () => {
-        return auth.signout()
+        return auth.signOut()
     }
 
     const passwordReset = (email) => {
