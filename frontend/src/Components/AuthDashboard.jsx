@@ -1,12 +1,30 @@
-import React from 'react'
-
+import React,{useState} from 'react'
+import {useHistory} from 'react-router-dom'
+import {useAuth} from '../cont  ext/AuthContext'
 
 const AuthDashboard = () => {
 
-    return (
-        <div>
+    const [error, setError] = useState(false)
+    const {currentUser, signout} = useAuth()
+    const history = useHistory()
 
-        </div>
+    const handleSignout = async () => {
+        setError('')
+        try{
+            await signout()
+            history.push('/')
+        }catch(error){
+            setError(error.message)
+        }
+    }
+    return (
+        <>
+            <div>
+                Dashboard
+            
+                <button onClick={handleSignout}>Log Out</button>
+            </div>
+        </>
     )
 }
 
