@@ -7,7 +7,7 @@ const NavBar = () => {
         <div className='nav-bar'>    
             <div className='container flex'>
                 <h1 class='logo'>Speculator</h1>
-                <ul><Link to='/'>Home</Link>{" "}</ul>
+                <ul><Link to='/home'>Home</Link>{" "}</ul>
                 <ul><Link to='/about'>About</Link>{" "}</ul>
                 <ul><Link to='/users'>Users</Link>{" "}</ul>
             </div>

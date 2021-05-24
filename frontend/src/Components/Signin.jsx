@@ -1,4 +1,5 @@
 import React,{useState, useRef} from 'react'
+import {Link} from 'react-router-dom'
 import {useHistory} from 'react-router-dom'
 import {useAuth} from '../context/AuthContext'
 const Signin = () => {
@@ -9,7 +10,7 @@ const Signin = () => {
     const emailRef = useRef()
     const passwordRef = useRef()
 
-    const { signin } = useAuth()
+    const { signin, currentUser } = useAuth()
     const history = useHistory()
 
     const handleSignin = (e) => {
@@ -41,6 +42,8 @@ const Signin = () => {
                 <input type='text' ref={passwordRef}></input>
                 <button type='submit' disabled={loading}>Submit</button> 
             </form>
+            {currentUser && currentUser.email}
+            <p>Need an account? <Link to='/accounts/signup'>Signup</Link></p>
         </div>
     )
 }

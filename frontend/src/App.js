@@ -1,4 +1,5 @@
 import React from 'react'
+import {useLocation} from 'react-router-dom'
 import {AuthProvider} from './context/AuthContext'
 import {Route, Switch} from 'react-router-dom'
 import NavBar from '../src/Components/NavBar'
@@ -17,19 +18,21 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <NavBar />
       <div className='App-body'>
       <AuthProvider>
         <Switch>
-              <PrivateRoute exact path= "/" component={AuthDashboard}/>
-              <Route path = '/home' component={LandingPage} />
-              <Route path='/profile' component={UserProfile} />
               <Route path='/accounts/signup' component={Signup} />
               <Route path='/accounts/signin' component={Signin} />
-              {/* <Route path='accounts/password/reset' component={ResetPassword} /> */}
-              <Route path='/users'  component={UserList}/>
-              <Route path='/stocks/:symbol' component={StockPage}/>
-              <Route path='/about'  component={AboutPage}/>
+              <div>
+                <NavBar />
+                <PrivateRoute exact path= "/" component={LandingPage}/>
+                <Route path = '/home' component={LandingPage} />
+                <Route path='/profile' component={UserProfile} />
+                {/* <Route path='accounts/password/reset' component={ResetPassword} /> */}
+                <Route path='/users'  component={UserList}/>
+                <Route path='/stocks/:symbol' component={StockPage}/>
+                <Route path='/about'  component={AboutPage}/>
+              </div>
         </Switch>
       </AuthProvider>
       </div>
