@@ -34,7 +34,7 @@ const Signin = () => {
     }
     return (
         <div>
-            <p>Signin</p>
+            <h2>Sign-in</h2>
             <form onSubmit={(e)=> handleSignin(e)}>
                 <label for='email'>Email</label>
                 <input type='text' ref={emailRef}></input>

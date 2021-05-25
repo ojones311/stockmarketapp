@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import {useHistory} from 'react-router-dom'
 import {useAuth} from '../context/AuthContext'
+import UserProfile from './UserProfile'
 
 const AuthDashboard = () => {
 
@@ -20,8 +21,8 @@ const AuthDashboard = () => {
     return (
         <>
             <div>
-                Dashboard
-            
+                <h2>Dashboard</h2>
+                <UserProfile currentUser={currentUser}/>
                 <button onClick={handleSignout}>Log Out</button>
             </div>
         </>

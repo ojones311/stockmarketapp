@@ -1,5 +1,5 @@
 import {useRef, useState} from 'react'
-import {useHistory} from 'react-router-dom'
+import {useHistory, Link} from 'react-router-dom'
 import {useAuth} from '../context/AuthContext'
 
 const Signup = () => {
@@ -34,7 +34,7 @@ const Signup = () => {
     }
     return (
         <div>
-            <p>Signup</p>
+            <h2>Signup</h2>
             <form onSubmit={(e) => handleSignup(e)}>
                 <label for='email'>Email</label>
                 <input type='text' ref={emailRef} id='email'></input>
@@ -48,6 +48,7 @@ const Signup = () => {
                 </div>
             </form>
             {currentUser && currentUser.email}
+            <p>Have an account already? <Link to='/accounts/signin'>Signin</Link></p>
         </div>
     )
 }

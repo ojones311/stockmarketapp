@@ -1,10 +1,15 @@
-import React from 'react'
+import React,{useState} from 'react'
 
 
-const UserProfile = () => {
+const UserProfile = ({currentUser}) => {
+
+    const [user, setUser] = useState('')
+
     return(
         <div>
-            <h3>User Profile</h3>
+            <h3>Profile</h3>
+            <p>{currentUser.displayName}</p>
+            <p>Email: {currentUser.email}</p>
         </div>
     )
 }

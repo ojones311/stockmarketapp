@@ -24,6 +24,7 @@ getUserByEmail = async (email) => {
   try{
     let query = `SELECT * FROM users WHERE (email=$1 AND is_deleted=false)`
     const user = await db.one(query,[email])
+    return user
   }catch(error){
       console.log('err', error)
   }
