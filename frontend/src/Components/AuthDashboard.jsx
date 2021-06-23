@@ -13,7 +13,7 @@ const AuthDashboard = () => {
         setError('')
         try{
             await signout()
-            history.push('/')
+            history.push('/accounts/signin')
         }catch(error){
             setError(error.message)
         }

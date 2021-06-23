@@ -12,6 +12,7 @@ import StockPage from '../src/Components/StockPage'
 import AboutPage from '../src/Components/AboutPage'
 import Signin from '../src/Components/Signin'
 import Signup from '../src/Components/Signup'
+import ResetPassword from '../src/Components/ResetPassword'
 import './App.css';
 
 
@@ -23,12 +24,13 @@ function App() {
         <Switch>
               <Route path='/accounts/signup' component={Signup} />
               <Route path='/accounts/signin' component={Signin} />
+              <Route path='/accounts/password-reset' component={ResetPassword} />
               <div>
                 <NavBar />
                 <PrivateRoute exact path= "/" component={AuthDashboard}/>
                 <Route path = '/home' component={LandingPage} />
                 <Route path='/profile/:id' component={UserProfile} />
-                {/* <Route path='accounts/password/reset' component={ResetPassword} /> */}
+                
                 <Route path='/users'  component={UserList}/>
                 <Route path='/stocks/:symbol' component={StockPage}/>
                 <Route path='/about'  component={AboutPage}/>

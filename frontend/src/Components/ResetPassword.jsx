@@ -3,53 +3,41 @@ import {Link} from 'react-router-dom'
 import {useHistory} from 'react-router-dom'
 import {useAuth} from '../context/AuthContext'
 
-const Signin = () => {
-
+const ResetPassword = () => {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
-
+    const [message, setMessage] = useState('')
     const emailRef = useRef()
-    const passwordRef = useRef()
 
-    const { signin, currentUser } = useAuth()
-    const history = useHistory()
+    const {passwordReset, currentUser } = useAuth()
 
-    const handleSignin = (e) => {
+    const handleResetPassword = (e) => {
         e.preventDefault()
         setError('')
+        setMessage('')
         setLoading(true)
 
         const email = emailRef.current.value
-        const password = passwordRef.current.value
-        
-        //push user page path onto history stack
-        signin(email,password)
+
+        passwordReset(email)
             .then((ref) => {
                 setLoading(false)
-                history.push('/')
-            })
-            .catch((err) => {
-                setError(err.message)
-                setLoading(false)
+                setMessage('Check your inbox for further instruction')
             })
     }
     return (
         <div>
-            <h2>Sign-in</h2>
-            <form onSubmit={(e)=> handleSignin(e)}>
+            <h2>Password Reset</h2>
+            <form onSubmit={(e)=> handleResetPassword(e)}>
                 <label for='email'>Email</label>
                 <input type='text' ref={emailRef}></input>
-                <label for='password'>Password</label>
-                <input type='text' ref={passwordRef}></input>
                 <button type='submit' disabled={loading}>Submit</button> 
             </form>
-            <div>
-                <Link to='/accounts/password-reset'>Forgot Password</Link>
-            </div>
+            <Link to='/accounts/signin'>Log In</Link>
             {currentUser && currentUser.email}
             <p>Need an account? <Link to='/accounts/signup'>Signup</Link></p>
         </div>
     )
 }
 
-export default Signin
+export default ResetPassword
