@@ -32,6 +32,9 @@ const ResetPassword = () => {
                 <label for='email'>Email</label>
                 <input type='text' ref={emailRef}></input>
                 <button type='submit' disabled={loading}>Submit</button> 
+                <div>
+                    {message}
+                </div>
             </form>
             <Link to='/accounts/signin'>Log In</Link>
             {currentUser && currentUser.email}

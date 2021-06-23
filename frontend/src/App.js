@@ -28,7 +28,7 @@ function App() {
               <div>
                 <NavBar />
                 <PrivateRoute exact path= "/" component={AuthDashboard}/>
-                <Route path = '/home' component={LandingPage} />
+                <Route path = '/chart' component={LandingPage} />
                 <Route path='/profile/:id' component={UserProfile} />
                 
                 <Route path='/users'  component={UserList}/>
