@@ -8,23 +8,24 @@ const StockCard = ({stock}) => {
         symbol,
         latestTime,
         close,
-        changePercentage
+        changePercent
     } = stock
 
     const determineColor = () => {
-        if(changePercentage >= 0){
-            return 'blue-card'
+        if(changePercent >= 0){
+            return {color:'blue'}
         }else {
-            return 'red-card'
+            return {color:'red'}
         }
     }
+
     return (
-        <div className={'stock ' + determineColor()}>
+        <div className={'stock'}>
             <h5>{companyName}</h5>
             <h5>{symbol}</h5>
             <p>{latestTime}</p>
-            <p>{close}</p>
-            <p>{changePercentage}</p>
+            <p style={determineColor()}>{close}</p>
+            <p style={determineColor()}>{changePercent}</p>
         </div>
     )
 }

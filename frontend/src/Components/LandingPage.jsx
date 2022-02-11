@@ -19,7 +19,10 @@ const LandingPage = () => {
     const getMostActiveStocks = async () => {
         try{
             let response = await axios.get(`https://cloud.iexapis.com/stable/stock/market/list/mostactive/?token=${secrets.iexKey}&listLimit=5`)
-            console.log(response)
+            console.log(response.data,response.status)
+            if(response.status === 200){
+                setMostActiveStocks(response.data)
+            }
         }catch(error){
             console.log('error',error)
         }

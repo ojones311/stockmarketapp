@@ -7,6 +7,7 @@ import StockCard from './StockCard.jsx'
 const ActiveStocks = ({mostActiveStocks, getMostActiveStocks}) => {
     return (
         <div>
+            <h3>Trending Stocks</h3>
             <button onClick={getMostActiveStocks}>Active Stocks</button>
             <div>
                 {
