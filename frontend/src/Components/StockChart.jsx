@@ -1,6 +1,7 @@
 import React, {useRef, useState, useEffect} from 'react'
 import {useHistory} from 'react-router-dom'
 import Chart from 'chart.js'
+
 import '../Styles/StockChart.css'
 
 
@@ -91,6 +92,7 @@ const StockChart = ({stock, chart, showChart}) => {
 
     return(
         <div>
+
             {showChart ? 
             <div className='title'>
                 <h2 id='title-link-sp' onClick={redirectToStockPage}>{stock.companyName}</h2>

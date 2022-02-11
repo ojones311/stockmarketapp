@@ -45,7 +45,7 @@ const SearchStockForm = ({setStock, setChart,setShowChart}) => {
 
     useEffect(() => {
         if(symbols.length === 0){
-            fetchIEXSymbols()
+            // fetchIEXSymbols()
         }
         
     },[symbols])
