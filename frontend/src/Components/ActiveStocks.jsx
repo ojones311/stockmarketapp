@@ -1,4 +1,5 @@
 import React from 'react'
+import StockCard from './StockCard.jsx'
 
 //Make request once when the button us pressed
 //After it saves the jsonData in the window localStorage.
@@ -10,7 +11,7 @@ const ActiveStocks = ({mostActiveStocks, getMostActiveStocks}) => {
             <div>
                 {
                     mostActiveStocks && mostActiveStocks.map((stock) => (
-                        <p>stock T</p>
+                        <StockCard stock={stock}/>
                     ))
                 }
             </div>
